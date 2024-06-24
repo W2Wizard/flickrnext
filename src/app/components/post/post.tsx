@@ -4,7 +4,8 @@
 //=============================================================================
 "use client";
 
-import { FlickrItem } from "@/app/lib/types"
+import CSS from "./post.module.css";
+import { FlickrItem } from "@/app/lib/types";
 import React, { HTMLAttributes } from "react";
 
 //=============================================================================
@@ -16,16 +17,18 @@ interface Props extends HTMLAttributes<HTMLElement> {
 //=============================================================================
 
 const Post: React.FC<Props> = ({ post, ...rest }) => {
+	const fallbackURL = "https://www.flickr.com/images/buddyicon.jpg";
 	const profileURL = `https://live.staticflickr.com/3708/buddyicons/${post.author_id}_r.jpg`;
 	const userURL = `https://www.flickr.com/photos/${post.author_id}`;
 	const daysAgo = Math.floor(
+		// 86400000 = 24 * 60 * 60 * 1000 = total milliseconds in a day
 		(Date.now() - new Date(post.date_taken).getTime()) / 86400000
 	);
 
 	return (
-		<div className="post transition">
+		<article className={`${CSS.article} transition`}>
 			<a
-				className="profile"
+				className={CSS.profile}
 				href={post.link}
 				target="_blank"
 				rel="noopener noreferrer"
@@ -38,7 +41,7 @@ const Post: React.FC<Props> = ({ post, ...rest }) => {
 					alt={post.title}
 				/>
 			</a>
-			<div hidden className="transition content">
+			<div hidden className={`${CSS.content} transition`}>
 				<a
 					href={userURL}
 					target="_blank"
@@ -48,12 +51,9 @@ const Post: React.FC<Props> = ({ post, ...rest }) => {
 					<img
 						width="32px"
 						height="32px"
-						className="profile"
+						className={CSS.profile}
 						loading="lazy"
-						onError={(e) => {
-							(e.currentTarget as HTMLImageElement).src =
-								"https://www.flickr.com/images/buddyicon.jpg";
-						}}
+						onError={(e) => e.currentTarget.src = fallbackURL}
 						src={profileURL}
 						alt={post.author}
 					/>
@@ -63,7 +63,7 @@ const Post: React.FC<Props> = ({ post, ...rest }) => {
 					{daysAgo > 0 ? `${daysAgo} days ago` : "Today"}
 				</small>
 			</div>
-		</div>
+		</article>
 	);
 };
 

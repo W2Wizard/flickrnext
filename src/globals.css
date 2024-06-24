@@ -90,7 +90,6 @@ body {
 	background-color: var(--wui-background);
 }
 
-
 html:has(dialog[open]) {
 	overflow: hidden;
 
@@ -127,6 +126,13 @@ img {
 	align-items: center;
 }
 
+.middle {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
 .transition {
 	transition-property: color, background-color, border-color,
 		text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter,
@@ -135,7 +141,23 @@ img {
 	transition-duration: 0.15s;
 }
 
-/* General purpose component styles */
+/*
+General purpose component styles
+
+NOTE: Usually this is like a cursed bad practice but this is only a small "SPA" with honestly
+not that many components so I'm just going to do this. Global CSS is BAD!
+
+However I really struggle trying find a neat elegant solution (besides tailwind) to introduce
+styles into Next.js components without having to import a bunch of CSS files or make entire
+pages client-side rendered. SSR for the win.
+
+I already have the styles written the way I want (because I did this in sveltekit)
+so to findout that Next/React don't have a neat way to do this is a bit frustrating.
+
+Yeah sure there are like 2615 different ways to do CSS in JS but I don't want to
+add a provider to inject extra JS jsut to deal with CSS, what a circus!
+*/
+
 /* ========================================================================= */
 
 a,
@@ -171,7 +193,7 @@ input.wui, select.wui, textarea.wui {
 	}
 }
 
-.wui.button {
+:is(a, button).wui.button {
 	cursor: pointer;
 	font-size: 16px;
 	color: var(--wui-foreground);

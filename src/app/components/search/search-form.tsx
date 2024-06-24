@@ -4,6 +4,7 @@
 //=============================================================================
 "use client";
 
+import CSS from "./search.module.css";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
 
@@ -11,7 +12,7 @@ import { Suspense, useState } from "react";
 
 export const SearchForm = () => {
 	return (
-		<form role="search">
+		<form className={CSS.form} role="search">
 			<Suspense>
 				<Body />
 			</Suspense>
@@ -30,10 +31,11 @@ const Body = () => {
 				className="wui"
 				name="q"
 				value={keywords}
+				placeholder="Search for photos..."
 				onChange={(e) => setKeywords(e.currentTarget.value)}
 			/>
 			<button className="wui button" type="submit">
-				Reload
+				Search
 			</button>
 		</>
 	);

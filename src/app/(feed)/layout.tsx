@@ -1,5 +1,6 @@
+import CSS from "./layout.module.css";
+import GithubIcon from "@/app/components/icons/github";
 import SearchForm from "@/app/components/search/search-form";
-import GithubIcon from "../components/icons/github";
 
 export default function RootLayout({
 	children,
@@ -8,7 +9,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<>
-			<header>
+			<header className={CSS.header}>
 				<a
 					href="https://portfolio.w2wizard.dev"
 					target="_blank"
@@ -31,7 +32,7 @@ export default function RootLayout({
 					</li>
 				</menu>
 			</header>
-			<main>{children}</main>
+			<main className={CSS.main}>{children}</main>
 		</>
 	);
 }

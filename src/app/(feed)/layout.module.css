@@ -1,0 +1,17 @@
+.header:is(header) {
+	background-color: var(--wui-header);
+	box-shadow: var(--wui-box-shadow);
+	color: var(--wui-primary-fg);
+	display: flex;
+	justify-content: space-between;
+	padding: 0.5rem 1rem;
+	position: sticky;
+	gap: 1rem;
+	top: 0;
+	z-index: 100;
+}
+
+.main:is(main) {
+	--main-padding: 1rem;
+	padding: var(--main-padding);
+}

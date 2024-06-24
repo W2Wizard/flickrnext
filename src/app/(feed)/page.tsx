@@ -3,6 +3,7 @@
 // See README in the root of this project for more information.
 //=============================================================================
 
+import CSS from "./page.module.css";
 import Post from "../components/post/post";
 import { getFlickrFeed } from "../lib/api";
 
@@ -42,7 +43,7 @@ export default async function Page({ searchParams }: PageProps) {
     const items = feed.items.slice(start, end);
 
     return (
-      <div key={i} id={`column-${i + 1}`}>
+      <div className={CSS.column} key={i} id={`column-${i + 1}`}>
         {items.map((item, j) => (
           <Post key={j} post={item} />
         ))}
@@ -51,7 +52,7 @@ export default async function Page({ searchParams }: PageProps) {
   });
 
 	return (
-		<ul>
+		<ul className={CSS.graph}>
       {columns}
 	  </ul>
 	)
