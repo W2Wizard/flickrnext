@@ -1,0 +1,263 @@
+/*=============================================================================
+// Copyright (c) 2024 - W2Wizard
+// See README in the root of this project for more information.
+==============================================================================*/
+
+@import "./reset.css";
+
+@font-face {
+	font-family: Geist;
+	src: url("/Geist.woff2") format("woff2");
+	font-display: swap;
+}
+
+@font-face {
+	font-family: BebasNeue;
+	src: url("/BebasNeue.ttf") format("ttf");
+	font-display: swap;
+}
+
+/* Root */
+/* ========================================================================= */
+
+:root {
+	font-family:
+		Geist,
+		BebasNeue,
+		-apple-system,
+		BlinkMacSystemFont,
+		"Segoe UI",
+		Roboto,
+		"Helvetica Neue",
+		Arial,
+		sans-serif;
+
+	--wui-shade-01: hsl(0, 0%, 91%);
+	--wui-shade-02: hsl(0, 0%, 85%);
+	--wui-shade-03: hsl(0, 0%, 75%);
+	--wui-shade-04: hsl(0, 0%, 65%);
+	--wui-shade-05: hsl(0, 0%, 54%);
+
+	--wui-text-01: hsl(0, 0%, 13%);
+	--wui-text-02: hsl(0, 0%, 27%);
+	--wui-text-03: hsl(240, 8%, 44%);
+	--wui-text-04: hsl(240, 8%, 64%);
+	--wui-text-05: hsl(240, 8%, 90%);
+
+	--wui-radius: 0.5rem;
+	--wui-header-height: 3rem;
+	--wui-border: hsl(0, 0%, 77%);
+
+	--wui-primary: hsla(16, 100%, 50%, 1);
+	--wui-secondary: hsla(16, 100%, 30%, 1);
+	--wui-primary-fg: hsl(0, 0%, 96%);
+
+	--wui-header: var(--wui-background);
+	--wui-outline: var(--wui-primary);
+	--wui-foreground: var(--wui-text-01);
+	--wui-background: hsl(0, 0%, 100%);
+	--wui-box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1),
+		0 1px 2px -1px rgb(0 0 0 / 0.1);
+
+	color: var(--wui-foreground);
+}
+
+:root[data-theme="dark"] {
+	--wui-shade-01: hsla(0, 0%, 12%, 1);
+	--wui-shade-02: hsla(0, 0%, 15%, 1);
+	--wui-shade-03: hsla(0, 0%, 20%, 1);
+	--wui-shade-04: hsla(0, 0%, 31%, 1);
+	--wui-shade-05: hsla(0, 0%, 37%, 1);
+
+	--wui-text-01: hsl(0, 0%, 90%);
+	--wui-text-02: hsl(0, 0%, 80%);
+	--wui-text-03: hsl(0, 0%, 65%);
+	--wui-text-04: hsl(0, 0%, 45%);
+	--wui-text-05: hsl(0, 0%, 25%);
+
+	--wui-background: #313131;
+	--wui-border: hsl(240 3.7% 15.9%);
+}
+
+/* Shared */
+/* ========================================================================= */
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: var(--wui-background);
+}
+
+
+html:has(dialog[open]) {
+	overflow: hidden;
+
+	&::backdrop {
+		pointer-events: none;
+		touch-action: none;
+		filter: blur(5px);
+	}
+}
+
+a {
+	color: var(--wui-primary);
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	vertical-align: middle;
+	font-style: italic;
+	background-repeat: no-repeat;
+	background-size: cover;
+	shape-margin: 1rem;
+	border-radius: 0.5rem;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.transition {
+	transition-property: color, background-color, border-color,
+		text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter,
+		backdrop-filter;
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	transition-duration: 0.15s;
+}
+
+/* General purpose component styles */
+/* ========================================================================= */
+
+a,
+button,
+[role="button"],
+input,
+select,
+textarea,
+search {
+	outline: 2px solid transparent;
+
+	&:focus-visible {
+		outline-color: var(--wui-primary);
+	}
+}
+
+input.wui, select.wui, textarea.wui {
+	padding: 0.25rem;
+	color: var(--wui-foreground);
+	box-shadow: var(--wui-box-shadow);
+	border-radius: var(--wui-radius);
+	border: 1px solid var(--wui-border);
+	background-color: var(--wui-shade-01);
+	font-size: 0.8rem;
+	height: 100%;
+
+	&:is(textarea) {
+		border-radius: 0;
+	}
+
+	&:is(select) {
+		padding-inline: 0.5rem;
+	}
+}
+
+.wui.button {
+	cursor: pointer;
+	font-size: 16px;
+	color: var(--wui-foreground);
+	border: 1px solid var(--wui-border);
+	background-color: var(--wui-shade-01);
+	padding: 0.35rem;
+	white-space: nowrap;
+
+	display: inline-flex;
+	place-items: center;
+	width: fit-content;
+
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	font-weight: normal;
+	user-select: none;
+	border-radius: calc(var(--wui-radius));
+
+	min-height: 1rem;
+	min-width: 1rem;
+
+	&:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+
+	&:not(:disabled)[type="submit"] {
+		color: var(--wui-primary-fg);
+		background-color: var(--wui-primary);
+		&:hover {
+			background-color: var(--wui-secondary);
+		}
+	}
+
+	&:hover:not(:disabled) {
+		background-color: var(--wui-shade-02);
+	}
+
+	&:active:not(:disabled) {
+		background-color: var(--wui-shade-03);
+	}
+}
+
+label {
+	line-height: 1;
+	font-weight: 500;
+	font-size: 0.775rem;
+}
+
+hr {
+	border: none;
+	margin: 6px 0px;
+	border-bottom: 2px solid var(--wui-border);
+	border-left: 2px solid var(--wui-border);
+	border-radius: var(--wui-radius);
+}
+
+/* Spinner */
+
+svg.spinner {
+	transform-origin: center;
+	animation: spinner_a 2s linear infinite;
+
+	& circle {
+		stroke-linecap: round;
+		animation: spinner_b 1.5s ease-in-out infinite;
+	}
+}
+
+@keyframes spinner_a {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+@keyframes spinner_b {
+	0% {
+		stroke-dasharray: 0 150;
+		stroke-dashoffset: 0;
+	}
+	47.5% {
+		stroke-dasharray: 42 150;
+		stroke-dashoffset: -16;
+	}
+	95%,
+	100% {
+		stroke-dasharray: 42 150;
+		stroke-dashoffset: -59;
+	}
+}
