@@ -1,6 +1,5 @@
-import CSS from "./layout.module.css";
 import GithubIcon from "@/app/components/icons/github";
-import SearchForm from "@/app/components/search/search-form";
+import SearchForm from "@/app/components/search-form";
 
 export default function RootLayout({
 	children,
@@ -9,7 +8,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<>
-			<header className={CSS.header}>
+			<header className="bg-[var(--wui-header)] text-[var(--wui-primary-fg)] flex justify-between z-10 gap-4 p-4">
 				<a
 					href="https://portfolio.w2wizard.dev"
 					target="_blank"
@@ -24,15 +23,15 @@ export default function RootLayout({
 					/>
 				</a>
 				<SearchForm />
-				<menu>
+				<menu className="flex items-center">
 					<li>
 						<a href="https://github.com/w2wizard/flickrfeed">
-						<GithubIcon />
+							<GithubIcon />
 						</a>
 					</li>
 				</menu>
 			</header>
-			<main className={CSS.main}>{children}</main>
+			<main className="px-4 pb-4">{children}</main>
 		</>
 	);
 }

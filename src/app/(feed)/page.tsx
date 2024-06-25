@@ -3,8 +3,7 @@
 // See README in the root of this project for more information.
 //=============================================================================
 
-import CSS from "./page.module.css";
-import Post from "../components/post/post";
+import Post from "../components/post";
 import { getFlickrFeed } from "../lib/api";
 
 //=============================================================================
@@ -13,7 +12,7 @@ interface PageProps {
 	searchParams: { [key: string]: string | string[] | undefined };
 }
 
-//=============================================================================\
+//=============================================================================
 
 export default async function Page({ searchParams }: PageProps) {
 	let keywords: string = "";
@@ -26,34 +25,34 @@ export default async function Page({ searchParams }: PageProps) {
 
 	const columnCount = 3;
 	const feed = await getFlickrFeed(keywords);
-  const itemsPerColumn = Math.ceil(feed.items.length / columnCount);
+	const itemsPerColumn = Math.ceil(feed.items.length / columnCount);
 
 	if (feed.items.length === 0) {
-    return (
-      <div className="middle center" style={{ flexDirection: 'column', textAlign: 'center' }}>
-        <span style={{ fontSize: '2rem' }}>🤔</span>
-        <b>Nothing found</b>
-      </div>
-    );
-  }
+		return (
+			<div className="flex flex-col items-center justify-center text-center min-h-screen">
+				<span className="text-2xl">🤔</span>
+				<b>Nothing found</b>
+			</div>
+		);
+	}
 
 	const columns = Array.from({ length: columnCount }, (_, i) => {
-    const start = i * itemsPerColumn;
-    const end = start + itemsPerColumn;
-    const items = feed.items.slice(start, end);
+		const start = i * itemsPerColumn;
+		const end = start + itemsPerColumn;
+		const items = feed.items.slice(start, end);
 
-    return (
-      <div className={CSS.column} key={i} id={`column-${i + 1}`}>
-        {items.map((item, j) => (
-          <Post key={j} post={item} />
-        ))}
-      </div>
-    );
-  });
+		return (
+			<div className="flex flex-col gap-4" key={i} id={`column-${i + 1}`}>
+				{items.map((item, j) => (
+					<Post key={j} post={item} />
+				))}
+			</div>
+		);
+	});
 
 	return (
-		<ul className={CSS.graph}>
-      {columns}
-	  </ul>
-	)
+		<ul className="grid gap-4 p-4 rounded-[var(--wui-radius)] shadow-inner grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+			{columns}
+		</ul>
+	);
 }

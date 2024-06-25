@@ -4,7 +4,6 @@
 //=============================================================================
 "use client";
 
-import CSS from "./post.module.css";
 import { FlickrItem } from "@/app/lib/types";
 import React, { HTMLAttributes } from "react";
 
@@ -26,40 +25,44 @@ const Post: React.FC<Props> = ({ post, ...rest }) => {
 	);
 
 	return (
-		<article className={`${CSS.article} transition`}>
+		<article className="group relative cursor-pointer rounded-[var(--wui-radius)] focus-img-no-outline transition hover:shadow-lg hover:scale-[1.015] text-white">
 			<a
-				className={CSS.profile}
+				className=""
 				href={post.link}
 				target="_blank"
 				rel="noopener noreferrer"
 				{...rest}
 			>
 				<img
-					className="transition"
+					className="w-full object-cover transition"
 					loading="lazy"
 					src={post.media.m}
 					alt={post.title}
 				/>
 			</a>
-			<div hidden className={`${CSS.content} transition`}>
+			<div className="absolute bottom-0 left-0 z-10 flex w-full items-center gap-2 p-2 opacity-0 transition-opacity backdrop-blur-sm rounded-[var(--wui-radius)] group-hover:opacity-100">
 				<a
 					href={userURL}
 					target="_blank"
 					rel="noopener noreferrer"
 					title="View profile"
+					className="outline-none"
 				>
 					<img
 						width="32px"
 						height="32px"
-						className={CSS.profile}
+						className="rounded-full outline-none group-focus-within:outline-[var(--wui-primary)] group-focus-within:outline-2 group-focus-within:outline-offset-2"
 						loading="lazy"
-						onError={(e) => e.currentTarget.src = fallbackURL}
+						onError={(e) => (e.currentTarget.src = fallbackURL)}
 						src={profileURL}
 						alt={post.author}
 					/>
 				</a>
-				<span>{post.title}</span>
-				<small title={post.date_taken.toString()}>
+				<span className="flex-1">{post.title}</span>
+				<small
+					title={post.date_taken.toString()}
+					className="text-xs min-w-[32px] "
+				>
 					{daysAgo > 0 ? `${daysAgo} days ago` : "Today"}
 				</small>
 			</div>

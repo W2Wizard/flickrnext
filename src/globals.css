@@ -3,7 +3,9 @@
 // See README in the root of this project for more information.
 ==============================================================================*/
 
-@import "./reset.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @font-face {
 	font-family: Geist;
@@ -15,6 +17,12 @@
 	font-family: BebasNeue;
 	src: url("/BebasNeue.ttf") format("ttf");
 	font-display: swap;
+}
+
+@layer components {
+  .focus-img-no-outline:has(> div.content > a:focus) img {
+    outline: none;
+  }
 }
 
 /* Root */
@@ -87,6 +95,7 @@
 }
 
 body {
+	margin: 0;
 	background-color: var(--wui-background);
 }
 
@@ -133,14 +142,6 @@ img {
 	transform: translate(-50%, -50%);
 }
 
-.transition {
-	transition-property: color, background-color, border-color,
-		text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter,
-		backdrop-filter;
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-	transition-duration: 0.15s;
-}
-
 /*
 General purpose component styles
 
@@ -160,7 +161,7 @@ add a provider to inject extra JS just to deal with CSS, what a circus!
 
 /* ========================================================================= */
 
-a,
+/*a,
 button,
 [role="button"],
 input,
@@ -172,9 +173,9 @@ search {
 	&:focus-visible {
 		outline-color: var(--wui-primary);
 	}
-}
+}*/
 
-input.wui, select.wui, textarea.wui {
+/*input.wui, select.wui, textarea.wui {
 	padding: 0.25rem;
 	color: var(--wui-foreground);
 	box-shadow: var(--wui-box-shadow);
@@ -191,9 +192,9 @@ input.wui, select.wui, textarea.wui {
 	&:is(select) {
 		padding-inline: 0.5rem;
 	}
-}
+}*/
 
-:is(a, button).wui.button {
+/*:is(a, button).wui.button {
 	cursor: pointer;
 	font-size: 16px;
 	color: var(--wui-foreground);
@@ -235,9 +236,9 @@ input.wui, select.wui, textarea.wui {
 	&:active:not(:disabled) {
 		background-color: var(--wui-shade-03);
 	}
-}
+}*/
 
-label {
+/*label {
 	line-height: 1;
 	font-weight: 500;
 	font-size: 0.775rem;
@@ -249,7 +250,7 @@ hr {
 	border-bottom: 2px solid var(--wui-border);
 	border-left: 2px solid var(--wui-border);
 	border-radius: var(--wui-radius);
-}
+}*/
 
 /* Spinner */
 
