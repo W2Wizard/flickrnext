@@ -44,51 +44,8 @@
 		Arial,
 		sans-serif;
 
-	--wui-shade-01: hsl(0, 0%, 91%);
-	--wui-shade-02: hsl(0, 0%, 85%);
-	--wui-shade-03: hsl(0, 0%, 75%);
-	--wui-shade-04: hsl(0, 0%, 65%);
-	--wui-shade-05: hsl(0, 0%, 54%);
-
-	--wui-text-01: hsl(0, 0%, 13%);
-	--wui-text-02: hsl(0, 0%, 27%);
-	--wui-text-03: hsl(240, 8%, 44%);
-	--wui-text-04: hsl(240, 8%, 64%);
-	--wui-text-05: hsl(240, 8%, 90%);
-
-	--wui-radius: 0.5rem;
-	--wui-header-height: 3rem;
-	--wui-border: hsl(0, 0%, 77%);
-
 	--wui-primary: hsla(16, 100%, 50%, 1);
 	--wui-secondary: hsla(16, 100%, 30%, 1);
-	--wui-primary-fg: hsl(0, 0%, 96%);
-
-	--wui-header: var(--wui-background);
-	--wui-outline: var(--wui-primary);
-	--wui-foreground: var(--wui-text-01);
-	--wui-background: hsl(0, 0%, 100%);
-	--wui-box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1),
-		0 1px 2px -1px rgb(0 0 0 / 0.1);
-
-	color: var(--wui-foreground);
-}
-
-:root[data-theme="dark"] {
-	--wui-shade-01: hsla(0, 0%, 12%, 1);
-	--wui-shade-02: hsla(0, 0%, 15%, 1);
-	--wui-shade-03: hsla(0, 0%, 20%, 1);
-	--wui-shade-04: hsla(0, 0%, 31%, 1);
-	--wui-shade-05: hsla(0, 0%, 37%, 1);
-
-	--wui-text-01: hsl(0, 0%, 90%);
-	--wui-text-02: hsl(0, 0%, 80%);
-	--wui-text-03: hsl(0, 0%, 65%);
-	--wui-text-04: hsl(0, 0%, 45%);
-	--wui-text-05: hsl(0, 0%, 25%);
-
-	--wui-background: #313131;
-	--wui-border: hsl(240 3.7% 15.9%);
 }
 
 /* Shared */
@@ -133,128 +90,12 @@ img {
 	border-radius: 0.5rem;
 }
 
-.center {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
 .middle {
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
-
-/*
-General purpose component styles
-
-NOTE: Usually this is like a cursed bad practice but this is only a small "SPA" with honestly
-not that many components so I'm just going to do this. Global CSS is BAD!
-
-However I really struggle trying find a neat elegant solution (besides tailwind) to introduce
-styles into Next.js components without having to import a bunch of CSS files or make entire
-pages client-side rendered. SSR for the win.
-
-I already have the styles written the way I want (because I did this in sveltekit)
-so to findout that Next/React don't have a neat way to do this is a bit frustrating.
-
-Yeah sure there are like 2615 different ways to do CSS in JS but I don't want to
-add a provider to inject extra JS just to deal with CSS, what a circus!
-*/
-
-/* ========================================================================= */
-
-/*a,
-button,
-[role="button"],
-input,
-select,
-textarea,
-search {
-	outline: 2px solid transparent;
-
-	&:focus-visible {
-		outline-color: var(--wui-primary);
-	}
-}*/
-
-/*input.wui, select.wui, textarea.wui {
-	padding: 0.25rem;
-	color: var(--wui-foreground);
-	box-shadow: var(--wui-box-shadow);
-	border-radius: var(--wui-radius);
-	border: 1px solid var(--wui-border);
-	background-color: var(--wui-shade-01);
-	font-size: 0.8rem;
-	height: 100%;
-
-	&:is(textarea) {
-		border-radius: 0;
-	}
-
-	&:is(select) {
-		padding-inline: 0.5rem;
-	}
-}*/
-
-/*:is(a, button).wui.button {
-	cursor: pointer;
-	font-size: 16px;
-	color: var(--wui-foreground);
-	border: 1px solid var(--wui-border);
-	background-color: var(--wui-shade-01);
-	padding: 0.35rem;
-	white-space: nowrap;
-
-	display: inline-flex;
-	place-items: center;
-	width: fit-content;
-
-	font-size: 0.875rem;
-	line-height: 1.25rem;
-	font-weight: normal;
-	user-select: none;
-	border-radius: calc(var(--wui-radius));
-
-	min-height: 1rem;
-	min-width: 1rem;
-
-	&:disabled {
-		opacity: 0.5;
-		cursor: not-allowed;
-	}
-
-	&:not(:disabled)[type="submit"] {
-		color: var(--wui-primary-fg);
-		background-color: var(--wui-primary);
-		&:hover {
-			background-color: var(--wui-secondary);
-		}
-	}
-
-	&:hover:not(:disabled) {
-		background-color: var(--wui-shade-02);
-	}
-
-	&:active:not(:disabled) {
-		background-color: var(--wui-shade-03);
-	}
-}*/
-
-/*label {
-	line-height: 1;
-	font-weight: 500;
-	font-size: 0.775rem;
-}
-
-hr {
-	border: none;
-	margin: 6px 0px;
-	border-bottom: 2px solid var(--wui-border);
-	border-left: 2px solid var(--wui-border);
-	border-radius: var(--wui-radius);
-}*/
 
 /* Spinner */
 

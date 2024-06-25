@@ -39,7 +39,7 @@ const Post = ({ post }: Props) => {
 					alt={post.title}
 				/>
 			</a>
-			<div className="absolute bottom-0 left-0 z-10 flex w-full items-center gap-2 p-2 opacity-0 transition-opacity backdrop-blur-sm rounded-lg group-focus-within/main:opacity-100 group-hover/main:opacity-100">
+			<div className="absolute bottom-0 left-0 z-10 flex w-full items-center gap-2 p-2 opacity-0 transition-opacity backdrop-blur-sm rounded-lg group-focus-within/main:opacity-100 group-hover/main:opacity-100 bg-[#80808040]">
 				<a
 					href={userURL}
 					target="_blank"

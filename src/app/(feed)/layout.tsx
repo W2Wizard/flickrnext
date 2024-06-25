@@ -26,7 +26,7 @@ export default function RootLayout({
 				<SearchForm />
 				<menu className="flex items-center wui-outline">
 					<li>
-						<a href="https://github.com/w2wizard/flickrfeed" className="wui-outline">
+						<a href="https://github.com/w2wizard/flickrnext" className="wui-outline">
 							<GithubIcon />
 						</a>
 					</li>
