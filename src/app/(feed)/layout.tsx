@@ -8,8 +8,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<>
-			<header className="bg-[var(--wui-header)] text-[var(--wui-primary-fg)] flex justify-between z-10 gap-4 p-4">
+			<header className="bg-[var(--wui-header)] text-gray-200 flex justify-between z-10 gap-4 p-4">
 				<a
+					className="wui-outline"
 					href="https://portfolio.w2wizard.dev"
 					target="_blank"
 					rel="noopener noreferrer"
@@ -23,9 +24,9 @@ export default function RootLayout({
 					/>
 				</a>
 				<SearchForm />
-				<menu className="flex items-center">
+				<menu className="flex items-center wui-outline">
 					<li>
-						<a href="https://github.com/w2wizard/flickrfeed">
+						<a href="https://github.com/w2wizard/flickrfeed" className="wui-outline">
 							<GithubIcon />
 						</a>
 					</li>

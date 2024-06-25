@@ -42,7 +42,7 @@ export default async function Page({ searchParams }: PageProps) {
 		const items = feed.items.slice(start, end);
 
 		return (
-			<div className="flex flex-col gap-4" key={i} id={`column-${i + 1}`}>
+			<div key={i} id={`column-${i + 1}`} className="flex-[100%] max-[100%] md:flex-[50%] md:max-[50%] lg:flex-[25%] lg:max-[25%] gap-4 first:mr-4 last:ml-4 flex flex-col">
 				{items.map((item, j) => (
 					<Post key={j} post={item} />
 				))}
@@ -51,7 +51,7 @@ export default async function Page({ searchParams }: PageProps) {
 	});
 
 	return (
-		<ul className="grid gap-4 p-4 rounded-[var(--wui-radius)] shadow-inner grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+		<ul className=" shadow-inner rounded-lg p-4 flex flex-wrap">
 			{columns}
 		</ul>
 	);

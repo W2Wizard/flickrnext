@@ -23,11 +23,10 @@ const Body = () => {
 	const searchParams = useSearchParams();
 	const initialKeywords = searchParams.get("q") || "";
 	const [keywords, setKeywords] = useState(initialKeywords);
-
 	return (
 		<>
 			<input
-				className="p-1 px-2 text-[var(--wui-foreground)] shadow-[var(--wui-box-shadow)] rounded-[var(--wui-radius)] border border-[var(--wui-border)] bg-[var(--wui-shade-01)] text-sm h-full flex-1 w-full md:w-auto outline-1 outline-offset-2 outline-[var(--wui-outline)] transition"
+				className="p-1 px-2 text-gray-600 shadow-inner wui-outline rounded-lg border border-gray-200 bg-gray-100 text-sm h-full flex-1 w-full md:w-auto transition"
 				name="q"
 				title="Search for photos..."
 				//type="search" // Text works too, this just adds an X button in some browsers
@@ -36,7 +35,7 @@ const Body = () => {
 				placeholder="Search for photos..."
 				onChange={(e) => setKeywords(e.currentTarget.value)}
 			/>
-			<button className="transition md:block hidden rounded-lg text-sm px-3 bg-[var(--wui-primary)] hover:bg-[var(--wui-secondary)]" type="submit">
+			<button className="transition md:block hidden rounded-lg text-sm px-3 wui-outline bg-[var(--wui-primary)] hover:bg-[var(--wui-secondary)]" type="submit">
 				Search
 			</button>
 		</>

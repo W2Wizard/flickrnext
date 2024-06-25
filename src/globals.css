@@ -23,6 +23,10 @@
   .focus-img-no-outline:has(> div.content > a:focus) img {
     outline: none;
   }
+
+	.wui-outline {
+		@apply outline-offset-2 outline-2 outline-[var(--wui-primary)]
+	}
 }
 
 /* Root */

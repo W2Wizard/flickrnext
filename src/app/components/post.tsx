@@ -15,7 +15,7 @@ interface Props extends HTMLAttributes<HTMLElement> {
 
 //=============================================================================
 
-const Post: React.FC<Props> = ({ post, ...rest }) => {
+const Post = ({ post }: Props) => {
 	const fallbackURL = "https://www.flickr.com/images/buddyicon.jpg";
 	const profileURL = `https://live.staticflickr.com/3708/buddyicons/${post.author_id}_r.jpg`;
 	const userURL = `https://www.flickr.com/photos/${post.author_id}`;
@@ -25,13 +25,12 @@ const Post: React.FC<Props> = ({ post, ...rest }) => {
 	);
 
 	return (
-		<article className="group relative cursor-pointer rounded-[var(--wui-radius)] focus-img-no-outline transition hover:shadow-lg hover:scale-[1.015] text-white">
+		<article className="group/main relative cursor-pointer rounded-lg transition hover:shadow-lg hover:scale-[1.015] text-white">
 			<a
-				className=""
 				href={post.link}
 				target="_blank"
+				className="wui-outline"
 				rel="noopener noreferrer"
-				{...rest}
 			>
 				<img
 					className="w-full object-cover transition"
@@ -40,18 +39,20 @@ const Post: React.FC<Props> = ({ post, ...rest }) => {
 					alt={post.title}
 				/>
 			</a>
-			<div className="absolute bottom-0 left-0 z-10 flex w-full items-center gap-2 p-2 opacity-0 transition-opacity backdrop-blur-sm rounded-[var(--wui-radius)] group-hover:opacity-100">
+			<div className="absolute bottom-0 left-0 z-10 flex w-full items-center gap-2 p-2 opacity-0 transition-opacity backdrop-blur-sm rounded-lg group-focus-within/main:opacity-100 group-hover/main:opacity-100">
 				<a
 					href={userURL}
 					target="_blank"
 					rel="noopener noreferrer"
 					title="View profile"
-					className="outline-none"
+					className="group/info outline-none"
 				>
 					<img
 						width="32px"
 						height="32px"
-						className="rounded-full outline-none group-focus-within:outline-[var(--wui-primary)] group-focus-within:outline-2 group-focus-within:outline-offset-2"
+						tabIndex={-1}
+						// Apply outline here to make it rounded
+						className="rounded-full outline-none group-focus-within/info:wui-outline group-focus-within/info:opacity-100"
 						loading="lazy"
 						onError={(e) => (e.currentTarget.src = fallbackURL)}
 						src={profileURL}

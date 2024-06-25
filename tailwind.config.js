@@ -9,7 +9,13 @@ const tailwindConfig = {
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+			gridTemplateColumns: {
+				'w1': "repeat(1, minmax(min-content, 1fr))",
+				'w2': "repeat(2, minmax(min-content, 1fr))",
+				'w3': "repeat(3, minmax(min-content, 1fr))",
+			}
+    },
   },
   plugins: [],
 }
