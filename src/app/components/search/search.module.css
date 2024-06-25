@@ -12,4 +12,11 @@
 			width: 100%;
 		}
 	}
+
+	/* The button is more so a idea, enter does work too technically */
+	& button[type="submit"] {
+		@media screen and (max-width: 400px) {
+			display: none;
+		}
+	}
 }

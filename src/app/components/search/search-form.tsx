@@ -30,11 +30,14 @@ const Body = () => {
 			<input
 				className="wui"
 				name="q"
+				title="Search for photos..."
+				type="search"
+				vocab="keywords"
 				value={keywords}
 				placeholder="Search for photos..."
 				onChange={(e) => setKeywords(e.currentTarget.value)}
 			/>
-			<button className="wui button" type="submit">
+			<button className="wui button transition" type="submit">
 				Search
 			</button>
 		</>
