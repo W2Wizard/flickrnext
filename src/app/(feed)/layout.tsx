@@ -1,5 +1,12 @@
+//=============================================================================
+// Copyright (c) 2024 - W2Wizard
+// See README in the root of this project for more information.
+//=============================================================================
+
 import GithubIcon from "@/app/components/icons/github";
 import SearchForm from "@/app/components/search-form";
+
+//=============================================================================
 
 export default function RootLayout({
 	children,
